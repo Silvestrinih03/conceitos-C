@@ -65,18 +65,34 @@ int main(){
     // if (salario >= 1000)
     //     cout<<"Salário após reajuste: "<<(salario*0,05)+salario;
 
-    // Exercício 06
+    // Exercício 06 FINALIZAR
     
 
     // Exercício 07
-    int n;
-    float s;
-    cout<<"Data a somatória (𝑆 = √1 + √2 + √3 + √4 + √5 + ⋯ + √𝑁)"<<endl;
-    do{
-        cout<<"Digite o valor de N (entre 11 e 99): "; cin>>n;
-    }
-    while (n<10 && n>100);
+    // int n, i;
+    // float soma = 0.0;
+    // do{
+    //     cout<<"Data a somatória (𝑆 = √1 + √2 + √3 + √4 + √5 + ⋯ + √𝑁)"<<endl;
+    //     cout<<"Digite o valor de N (entre 11 e 99): "; cin>>n;
+    // } while (n<10 || n>100);
+    // for (i=1; i<=n; i++)
+    //     soma+= sqrt(i);
 
+    // Exercício 08 FINALIZAR
+    // int n, x, i;
+    // cout<<"Digite o valor de X: "; cin>>x;
+    // do{
+    //     cout<<"Digite o valor de N (positivo e menor que 50): "; cin>>n;
+    // }
+    // while (n>50 || n<0);
+    // for (i = x, x<=n, )
+
+    // Exercício 09
+    int n, i;
+    cout<<"Digite o valor de N: "; cin>>n;
+    for (i=0; i<=n; i+=4)
+        cout<<i+1<<" ";
+    
 
     return 0;
 }
