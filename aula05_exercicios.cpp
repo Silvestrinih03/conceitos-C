@@ -87,11 +87,18 @@ int main(){
     // while (n>50 || n<0);
     // for (i = x, x<=n, )
 
-    // Exercício 09
-    int n, i;
-    cout<<"Digite o valor de N: "; cin>>n;
-    for (i=0; i<=n; i+=4)
-        cout<<i+1<<" ";
+    // Exercício 09 FINALIZAR
+
+    // Exercício 10
+    int n, x, i, maior = 0;
+    cout<<"Digite a quantidade de números que será inserido: "; cin>>n;
+    cout<<"Números: "<<endl;
+    for (x=0; x<n; x++)
+        cin>>x;
+        if (x > maior){
+            maior = x;
+        }
+    cout<<"O maior valor digitado foi: "<<maior;
     
 
     return 0;
