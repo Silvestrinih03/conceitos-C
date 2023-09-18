@@ -1,6 +1,25 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+
+// Exercícios faltantes 05, 06, 07, 08, 13, 14, 15, 16
+
+void ler_matriz(int matriz[][30], int n, int m){
+    for(int i=0; i<n; i++)
+        for (int j=0; j<m; j++){
+            cout<<"["<<i+1<<"]["<<j+1<<"]: "; 
+            cin>>matriz[i][j];
+        }
+}
+
+void imprimir_matriz(int matriz[][30], int n, int m){
+    for (int i=0; i<n; i++){
+        cout<<endl;
+        for (int j=0; j<n; j++)
+            cout<<setw(5)<<matriz[i][j];
+    }    
+}
+
 int main(){
     // Exercício 01
     /*int n, k, vetor[100];
@@ -134,6 +153,53 @@ int main(){
                 }     
     if (flag == 1)
         cout<<"\nÉ simetrica!";*/
+
+    //Exercício 10
+    /*int n, m, soma=0;
+    cout<<"Digite a medida da matriz (NxM): "<<endl; cin>>n>>m;
+    int A[n][m];
+    for (int i=0; i<n; i++)
+        for(int j=0; j<m; j++){
+            cout<<"["<<i+1<<"]["<<j+1<<"]: ";
+            cin>>A[i][j];
+            if (A[i][j]%2==0)
+                soma+=A[i][j];
+        }
+        
+    for (int i=0; i<n; i++){
+        cout<<endl;
+        for (int j=0; j<m; j++)
+            cout<<setw(5)<<A[i][j];
+    }
+    
+    cout<<"\nSoma dos elementos pares: "<<soma;*/
+
+    //Exercício 11
+    /*int n, m, k, soma = 0;
+    cout << "Digite a medida da matriz (NxM): " << endl;
+    cin >> n >> m;
+    int A[n][30];
+
+    ler_matriz(A, n, m);
+
+    cout << "Digite o valor da linha que deseja somar: ";
+    cin >> k;
+
+    if (k > n) {
+        cout << "Linha inexistente na matriz." << endl;
+    } else {
+        k--; // Reduzimos 1 para corresponder ao índice do array (começa em 0).
+        for (int i = 0; i < m; i++)
+            soma += A[k][i];
+
+        imprimir_matriz(A, n, m);
+        cout << "\nSoma da linha " << k + 1 << ": " << soma << endl;
+    }*/
+
+    // Exercício 12
+    /*char nome[30];
+    cout<<"Digite um nome: "; cin.getline(nome, 30);
+    cout<<"Bom dia "<<nome<<"! Tudo bem?";*/
 
 return 0;
 }
