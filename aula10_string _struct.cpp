@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <cstring>
 using namespace std;
 
 int main() {
@@ -58,27 +59,47 @@ int main() {
 }
 
 //Exercício 03 - FINALIZAR
-    /*struct produto{
-        int codigo, quantidade_estoque;
-        char nome[31];
-        float preco;
-    };
+/*struct produto {
+    int codigo, quantidade_estoque;
+    char nome[31];
+    float preco;
+};
 
-    int main(){
-        int n;
-        produto prod;
-        cout<<"Quantidade de produtos que serão cadastrados: ";
-        cin>>n;
-        for (int i=0; i<n; i++){
-            cout<<"Código: "; cin>>prod.codigo;
-            cin.ignore();
-            cout<<"Nome: "; cin.getline(prod.nome, 31);
-            cout<<"Preço: "; cin>>prod.preco;
-            cout<<"Quantidade no estoque: "; cin>>prod.quantidade_estoque;
+int main() {
+    int n;
+    cout << "Quantidade de produtos que serão cadastrados: ";
+    cin >> n;
+    
+    produto prod[100];
+    
+    for (int i = 0; i < n; i++) {
+        cout << "Código: "; 
+        cin >> prod[i].codigo;
+        cin.ignore();
+        
+        cout << "Nome: "; 
+        cin.getline(prod[i].nome, 31);
+        
+        cout << "Preço: "; 
+        cin >> prod[i].preco;
+        
+        cout << "Quantidade no estoque: "; 
+        cin >> prod[i].quantidade_estoque;
+    }
+    
+    cout << "Produtos com quantidade no estoque igual a zero:\n";
+    
+    for (int i = 0; i < n; i++) {
+        if (prod[i].quantidade_estoque == 0) {
+            cout << "Código: " << prod[i].codigo << "\n";
+            cout << "Nome: " << prod[i].nome << "\n";
+            cout << "Preço: " << prod[i].preco << "\n";
+            cout << "Quantidade no estoque: " << prod[i].quantidade_estoque << "\n\n";
         }
-
-        return 0;
-    }*/
+    }
+    
+    return 0;
+}*/
 
 // Exercício 04
 

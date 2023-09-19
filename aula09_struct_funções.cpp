@@ -2,7 +2,7 @@
 #include <iomanip>
 using namespace std;
 
-// Exercício 01
+// Exercício 01 - Struct
 /*struct produto{
     int cod, qntd_pedida;
     char desc[20];
@@ -29,8 +29,8 @@ int main() {
 }*/
 
 
-// Exercício 02
-struct endereco{
+// Exercício 02 - Struct
+/*struct endereco{
     char rua[20], complemento[20], cep[10], cidade[20], UF[3];
     int numero;
 };
@@ -63,4 +63,39 @@ int main(){
     }
 
     return 0;
+}*/
+
+// Exercício 03 - Função float
+/*float soma(int x, int y){
+    float z;
+    z= 1.0/x+1.0/y;
+    return z;
 }
+
+int main(){
+    int a, b;
+    float S;
+    cout<<"Digite o valor de a: "; cin>>a;
+    cout<<"Digite o valor de b: "; cin>>b;
+    S=soma(a,b);
+    cout<<"Soma :"<<S;
+
+    return 0;
+}*/
+
+// Exercício 04 - Função long 
+/*long fat(int n){
+    long i, P=1;
+    for (int i=0; i<=n; i++){
+        P=P*i;
+        return P;
+    }
+}
+int main(){
+    int n, k;
+    float S= 0;
+    for (k=5; k>=1; k--)
+        S+=(float)k/fat(2*k);
+    cout<<"Soma: "<< S;
+    return 0;
+}*/
