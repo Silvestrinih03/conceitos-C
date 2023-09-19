@@ -1,8 +1,9 @@
 #include <iostream>
 #include <iomanip>
+#include <string.h>
 using namespace std;
 
-// Exercícios faltantes 05, 06, 07, 08, 13, 14, 15, 16
+// Exercícios faltantes 05, 06, 07, 08, 15, 16
 
 void ler_matriz(int matriz[][30], int n, int m){
     for(int i=0; i<n; i++)
@@ -200,6 +201,29 @@ int main(){
     /*char nome[30];
     cout<<"Digite um nome: "; cin.getline(nome, 30);
     cout<<"Bom dia "<<nome<<"! Tudo bem?";*/
+
+    // Exercício 13
+    /*char vetor[11];
+    int comp=strlen(vetor);
+    do{
+        cout<<"Digite uma palavra que tenha entre de 4 a 10 letras: ";
+        cin.getline(vetor,11);
+    }while(comp<4 || comp>10);
+    cout<<"\nPrimeira letra: "<<vetor[0];
+    cout<<"\nSegunda letra: "<<vetor[1];
+    cout<<"\nPenúltima letra: "<<vetor[comp-1];
+    cout<<"\nÚltima letra: "<<vetor[comp];*/
+
+    //Exercício 14
+    /*char vetor[30];
+    cout<<"Digite uma palavra: ";
+    cin.getline(vetor,30);
+    for (int i=0; i<strlen(vetor); i++)
+        if (vetor[i]=='a')
+            vetor[i]='o';
+        else if(vetor[i]=='e')
+            vetor[i]='u';
+    cout<<vetor;*/ 
 
 return 0;
 }
