@@ -60,12 +60,12 @@ int soma(int n) {
 int main() {
     int total, n;
 
-    std::cout << "Digite um valor para n: ";
-    std::cin >> n;
+    cout << "Digite um valor para n: ";
+    cin >> n;
 
     total = soma(n);
 
-    std::cout << "A soma dos primeiros " << n << " números naturais é: " << total << std::endl;
+    cout << "A soma dos primeiros " << n << " números naturais é: " << total << std::endl;
 
     return 0;
 }
