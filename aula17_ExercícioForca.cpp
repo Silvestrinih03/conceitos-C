@@ -15,7 +15,8 @@ int boas_vindas(){
     cout<<"\n\nSeja bem-vindo ao VeniceGuess";
     cout<<"\n1 - Iniciar";
     cout<<"\n2 - Regras do jogo";
-    cout<<"\nDigite sua opção: "; cin>>escolha;
+    cout<<"\n3 - Sair do jogo";
+    cout<<"\nDigite sua escolha: "; cin>>escolha;
     return escolha;}
 
 void desenha_forca(int k, char Vet_erros[7], char Vet_acertos[21]){
@@ -113,22 +114,22 @@ void desenha_forca(int k, char Vet_erros[7], char Vet_acertos[21]){
         cout<<"--------"<<endl;
         cout<<"ERROS: "<<Vet_erros<<endl;
         cout<<"Acertos:"<<Vet_acertos<<endl;}
-    // else if(k==6){
-    //     cout<<"----------------------|"<<endl;
-    //     cout<<"|                   _____"<<endl;
-    //     cout<<"|                  |     |"<<endl;
-    //     cout<<"|                  |_____|"<<endl;
-    //     cout<<"|                     |"<<endl;
-    //     cout<<"|                 ----|----"<<endl;
-    //     cout<<"|                     |"<<endl;
-    //     cout<<"|                     |"<<endl;
-    //     cout<<"|                    / \\"<<endl;
-    //     cout<<"|                   /   \\"<<endl;
-    //     cout<<"|                  /     \\"<<endl;
-    //     cout<<"|"<<endl;
-    //     cout<<"--------"<<endl;
-    //     cout<<"ERROS: "<<Vet_erros<<endl;
-    //     cout<<"Acertos:"<<Vet_acertos<<endl;}
+    else if(k==6){
+        cout<<"----------------------|"<<endl;
+        cout<<"|                   _____"<<endl;
+        cout<<"|                  |     |"<<endl;
+        cout<<"|                  |_____|"<<endl;
+        cout<<"|                     |"<<endl;
+        cout<<"|                 ----|----"<<endl;
+        cout<<"|                     |"<<endl;
+        cout<<"|                     |"<<endl;
+        cout<<"|                    / \\"<<endl;
+        cout<<"|                   /   \\"<<endl;
+        cout<<"|                  /     \\"<<endl;
+        cout<<"|"<<endl;
+        cout<<"--------"<<endl;
+        cout<<"ERROS: "<<Vet_erros<<endl;
+        cout<<"Acertos:"<<Vet_acertos<<endl;}
     else {
         cout<<"----------------------|"<<endl;
         cout<<"|                   _____"<<endl;
@@ -142,7 +143,7 @@ void desenha_forca(int k, char Vet_erros[7], char Vet_acertos[21]){
         cout<<"|                   /   \\"<<endl;
         cout<<"|                  /     \\"<<endl;
         cout<<"|"<<endl;
-        // cout<<"--------         VOCE MORREU!"<<endl;
+        cout<<"--------         VOCE MORREU!"<<endl;
         cout<<"ERROS: "<<Vet_erros<<endl;
         cout<<"Acertos:"<<Vet_acertos<<endl;}
 }
@@ -152,7 +153,7 @@ int jogada(char Palavra[], char Vet_acertos[], char Vet_erros[], int *erros, int
     bool letraRepetida = false;
     do{
         letraRepetida = false;
-        cout<<"LETRA: "; cin>>letra;
+        cout<<"LETRA: "; cin>>letra; letra = toupper(letra);
         for (int j = 0; j < strlen(Vet_acertos); j++) {
             if (letra == Vet_acertos[j]) {
                 cout<<"Essa letra já foi inserida! Digite novamente: ";
@@ -175,7 +176,7 @@ int jogada(char Palavra[], char Vet_acertos[], char Vet_erros[], int *erros, int
 
     for (int i = 0; i < strlen(Palavra); i++) {
         if (letra == Palavra[i]) {
-            Vet_acertos[*acertos] = letra;
+            Vet_acertos[i] = letra;
             (*acertos)++;
             letraEncontrada = true;
         }
@@ -207,52 +208,54 @@ int main(){
     "SURICATO", "JAGUATIRICA", "OCAPI", "FLAMINGO", "POLVO"};
 
     char bancoDocinhos[TAM][21]={
-    "Alfajor", "Langos", "Cajuzinho", "Churros", "Donuts", 
-    "Frape", "Nutella", "Pudim", "Quindim", "Queijadinha", 
-    "Rocambole", "Tiramisu", "Waffle", "Zeppole", "Torta", 
-    "Goiabada", "Cupcake", "Bomba", "Beijinho", "Milkshake"};
+    "ALFAJOR", "LANGOS", "CAJUZINHO", "CHURROS", "DONUTS", 
+    "FRAPE", "NUTELLA", "PUDIM", "QUIMDIM", "QUEIJADINHA", 
+    "ROCAMBOLE", "TIRAMISU", "WAFFLE", "ZEPPOLE", "TORTA", 
+    "GOIABADA", "CUPCAKE", "BOMBA", "BEIJINHO", "MILKSHAKE"};
 
-    int esc, tema=0, dificuldade=0, k=0, erros=0, acertos=0, ganhou=0, perdeu=7;
+    int esc, tema=0, dificuldade=0, k=0;
     char Palavra[21], Vet_erros[7], Vet_acertos[21];
 
     // Inicializa o gerador de números aleatórios com o tempo atual
     srand(static_cast<unsigned int>(time(nullptr))); 
 
-    // Limpa os vetores Vet_acertos e Vet_erros
-    memset(Vet_acertos, 0, sizeof(Vet_acertos));
-    memset(Vet_erros, 0, sizeof(Vet_erros));
-
-    esc = boas_vindas();
     while (esc!=3){
+        // Limpa os vetores Vet_acertos e Vet_erros
+        memset(Vet_acertos, 0, sizeof(Vet_acertos));
+        memset(Vet_erros, 0, sizeof(Vet_erros));
+        int ganhou=0, perdeu=0, erros=0, acertos=0, k=0;
+        esc = boas_vindas();
         switch(esc){
             case 1:
                 cout<<"\nTema 1: Animais"<<endl;
                 cout<<"Tema 2: Doces"<<endl;
-                cout<<"3 para sair do jogo"<<endl;
                 cout<<"Escolha o tema: "; cin>>tema;
                 // cout<<"Dificuldade 1: De 4 a 6 Letras"<<endl;
                 // cout<<"Dificuldade 2: De 7 a 21 Letras"<<endl;
                 // cout<<"Escolha a dificuldade: "; cin>>dificuldade;
                 if (tema==1){
                     sortear_palavra(Palavra, bancoAnimais, Vet_acertos);
-                    cout<<"P Sorteada: "<<Palavra<<endl<<endl;
+                    // cout<<"P Sorteada: "<<Palavra<<endl<<endl;
                 }
                 else {
                     sortear_palavra(Palavra, bancoDocinhos, Vet_acertos);
-                    cout<<"P Sorteada: "<<Palavra<<endl<<endl;
+                    // cout<<"P Sorteada: "<<Palavra<<endl<<endl;
                 }
-                
                 while (ganhou<strlen(Palavra) && erros<7){
-                    desenha_forca(k,Vet_erros, Vet_acertos);
-                    jogada(Palavra, Vet_acertos, Vet_erros, &erros, &acertos);
-                    k=erros;
-                    perdeu=erros;
-                    ganhou=acertos;
-                    if (ganhou==strlen(Palavra))
-                        cout<<"Você venceu!";
-                    else if(perdeu==7)
-                        cout<<"Você Perdeu!";
-                }
+                        desenha_forca(k,Vet_erros, Vet_acertos);
+                        jogada(Palavra, Vet_acertos, Vet_erros, &erros, &acertos);
+                        k=erros;
+                        perdeu=erros;
+                        ganhou=acertos;
+                    }
+                    if (ganhou==strlen(Palavra)){
+                        cout<<"\nVoce venceu!"<<endl;
+                        cout<<"Palavra: "<<Vet_acertos;
+                    }
+                    else if(perdeu==7){
+                        k=7;
+                        desenha_forca(k,Vet_erros, Vet_acertos);
+                    }
                 break;
             case 2:
                 cout<<"*********************************************"<<endl;
