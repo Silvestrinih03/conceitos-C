@@ -7,6 +7,8 @@ using namespace std;
 
 // Structs em funções
 // Exercício 01
+
+
 // struct produto{
 //     int codigo;
 //     char nome[31];

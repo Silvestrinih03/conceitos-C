@@ -129,7 +129,11 @@ void desenha_forca(int k, char Vet_erros[7], char Vet_acertos[21]){
         cout<<"|"<<endl;
         cout<<"--------"<<endl;
         cout<<"ERROS: "<<Vet_erros<<endl;
-        cout<<"Acertos:"<<Vet_acertos<<endl;}
+        cout<<"Acertos:"<<Vet_acertos<<endl;
+        // for (int i=0; i<strlen(Vet_acertos); i++){
+        //     cout<<Vet_acertos[i]<<"  ";
+        // } 
+        }
     else {
         cout<<"----------------------|"<<endl;
         cout<<"|                   _____"<<endl;
@@ -153,7 +157,9 @@ int jogada(char Palavra[], char Vet_acertos[], char Vet_erros[], int *erros, int
     bool letraRepetida = false;
     do{
         letraRepetida = false;
-        cout<<"LETRA: "; cin>>letra; letra = toupper(letra);
+        cout<<"LETRA: "; cin>>letra; 
+        letra = toupper(letra);
+        if (letra=='*')return -1;
         for (int j = 0; j < strlen(Vet_acertos); j++) {
             if (letra == Vet_acertos[j]) {
                 cout<<"Essa letra já foi inserida! Digite novamente: ";
@@ -171,6 +177,7 @@ int jogada(char Palavra[], char Vet_acertos[], char Vet_erros[], int *erros, int
             }
         }
     }while (!isalpha(letra) || letraRepetida);
+    // letra<'A' || letra> 'Z'
 
     bool letraEncontrada = false;
 
@@ -185,8 +192,7 @@ int jogada(char Palavra[], char Vet_acertos[], char Vet_erros[], int *erros, int
         Vet_erros[*erros] = letra;
         (*erros)++;
     }
-
-    return letraEncontrada;
+    return 0;
 }
 
 void sortear_palavra(char Palavra[], char bd[][21], char Vet_acertos[]) {
@@ -202,6 +208,7 @@ void sortear_palavra(char Palavra[], char bd[][21], char Vet_acertos[]) {
 int main(){
     // dar a possibilidade de interromper a qualquer momento o jogo – por exemplo digitando ‘*’ no lugar de uma letra; FAZER
     char bancoAnimais [TAM][21]={
+    // Ideias de melhoria - chamar uma função que carrega o banco
     "GATO", "GIRAFA", "PAPAGAIO", "CACHORRO", "NARVAL", 
     "ABELHA", "ELEFANTE", "FOCA", "ONITORRINCO", "LEOPARDO", 
     "HIPOPOTAMO", "TAMANDUA", "QUATI", "RATO", "DROMEDARIO",
@@ -213,7 +220,7 @@ int main(){
     "ROCAMBOLE", "TIRAMISU", "WAFFLE", "ZEPPOLE", "TORTA", 
     "GOIABADA", "CUPCAKE", "BOMBA", "BEIJINHO", "MILKSHAKE"};
 
-    int esc, tema=0, dificuldade=0, k=0;
+    int esc, tema=0, dificuldade=0, k=0, retorno;
     char Palavra[21], Vet_erros[7], Vet_acertos[21];
 
     // Inicializa o gerador de números aleatórios com o tempo atual
@@ -243,20 +250,33 @@ int main(){
                 }
                 while (ganhou<strlen(Palavra) && erros<7){
                         desenha_forca(k,Vet_erros, Vet_acertos);
-                        jogada(Palavra, Vet_acertos, Vet_erros, &erros, &acertos);
+                        retorno = jogada(Palavra, Vet_acertos, Vet_erros, &erros, &acertos);
+                        if (retorno==-1)break;
                         k=erros;
                         perdeu=erros;
                         ganhou=acertos;
                     }
                     if (ganhou==strlen(Palavra)){
+                        cout<<"       ___________      \n";
+		                cout<<"      '._==_==_=_.'     \n";
+		                cout<<"      .-\\:      /-.    \n";
+		                cout<<"     | (|:.     |) |    \n";
+		                cout<<"      '-|:.     |-'     \n";
+		                cout<<"        \\::.    /      \n";
+		                cout<<"         '::. .'        \n";
+		                cout<<"           ) (          \n";
+		                cout<<"         _.' '._        \n";
+		                cout<<"        '-------'       \n\n";
                         cout<<"\nVoce venceu!"<<endl;
-                        cout<<"Palavra: "<<Vet_acertos;
+                        cout<<"Palavra certa: "<<Palavra;
                     }
                     else if(perdeu==7){
                         k=7;
                         desenha_forca(k,Vet_erros, Vet_acertos);
+                        cout<<"Palavra certa: "<<Palavra;
                     }
                 break;
+            // regras em uma função
             case 2:
                 cout<<"*********************************************"<<endl;
                 cout<<"Objetivo:"<<endl;
