@@ -207,33 +207,67 @@ void inserir_final(no**pri, elemento a){
 
 /// V - Eliminação
 // Exercício 01
-void eliminar_ultimoItem(no** pri) {
+// void eliminar_ultimoItem(no** pri) {
+//     no*p=*pri, *anterior=NULL;
+//     if (*pri == NULL) {
+//         cout << "Lista vazia" << endl;
+//         return; // Lista vazia
+//     }
+//     if ((*pri)->link == NULL) {
+//         free(*pri);
+//         *pri = NULL;
+//         return; // Há apenas um elemento na lista, remova-o e defina o ponteiro como NULL.
+//     }
+//     while (p->link != NULL) {
+//         anterior = p;
+//         p = p->link;
+//     }
+//     free(p);
+//     anterior->link = NULL;
+// }
+// int main(){
+//     no*pri=init();
+//     int n, valor;
+//     cout<<"Digite a quantidade de valores que será inserido: "; cin>>n;
+//     for (int i=0; i<n; i++){
+//         cout<<"Valor: "; cin>>valor;
+//         inserir_final(&pri, valor);
+//     }
+//     imprimir(pri);
+//     eliminar_ultimoItem(&pri);
+//     cout<<endl<<"Elimina o último item: ";imprimir(pri);
+// }
+
+
+
+// Exercícios extras
+int eliminar_terceiro_no(no**pri){
     no*p=*pri, *anterior=NULL;
-    if (*pri == NULL) {
-        cout << "Lista vazia" << endl;
-        return; // Lista vazia
+    int cont=1;
+    while (p!=NULL & cont<3){
+        anterior=p;
+        p=p->link;
+        cont++;
     }
-    if ((*pri)->link == NULL) {
-        free(*pri);
-        *pri = NULL;
-        return; // Há apenas um elemento na lista, remova-o e defina o ponteiro como NULL.
+    if (cont<3){
+        return -1;
     }
-    while (p->link != NULL) {
-        anterior = p;
-        p = p->link;
-    }
+    else anterior->link=p->link;
     free(p);
-    anterior->link = NULL;
+    return 0;
 }
+
 int main(){
     no*pri=init();
-    int n, valor;
-    cout<<"Digite a quantidade de valores que será inserido: "; cin>>n;
+    int n, valor, elim;
+    cout<<"Quantidade de elementos: "; cin>>n;
     for (int i=0; i<n; i++){
-        cout<<"Valor: "; cin>>valor;
+        cout<<"Valor: "<<i+1<<": "; cin>>valor;
         inserir_final(&pri, valor);
     }
     imprimir(pri);
-    eliminar_ultimoItem(&pri);
-    cout<<endl<<"Elimina o último item: ";imprimir(pri);
+    elim=eliminar_terceiro_no(&pri);
+    if (elim==-1)cout<<"Não há terceiro nó";
+    else cout<<endl;
+    imprimir(pri);
 }
