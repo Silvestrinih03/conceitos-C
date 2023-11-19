@@ -36,6 +36,7 @@ void error(int i){
 }
 ///fun��o para iniciar a pilha vazia
 void initStack(Stack& p){ p.top =-1;}
+
 ///fun��o que inserir informa��o no topo da pilha
 void push(Stack & p, stack_element x){
     if ( p.top == MAXELEMENTS-1)error(1);

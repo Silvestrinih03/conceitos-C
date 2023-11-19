@@ -4,46 +4,46 @@ using namespace std;
 
 // Lista ligada/ Dinâmica
 // Exercício 01
-// typedef float elemento;
-// typedef struct no{
-//     elemento info;
-//     no*link;
-// }no;
+typedef int elemento;
+typedef struct no{
+    elemento info;
+    no*link;
+}no;
 
-// no*init(){
-//     return NULL;
-// }
+no*init(){
+    return NULL;
+}
 
-// no*novo_no(){
-//     no*novo;
-//     novo=(no*)malloc(sizeof(no));
-//     if (novo==NULL){
-//         cout<<"Erro de alocação de memória!";
-//         exit(1);
-//     }
-//     return novo;
-// }
+no*novo_no(){
+    no*novo;
+    novo=(no*)malloc(sizeof(no));
+    if (novo==NULL){
+        cout<<"Erro de alocação de memória!";
+        exit(1);
+    }
+    return novo;
+}
 
-// void imprime(no*pri){
-//     while (pri!=NULL)
-//     {
-//         cout<<pri->info<<"  ";
-//         pri=pri->link;
-//     }
-// }
+void imprime(no*pri){
+    while (pri!=NULL)
+    {
+        cout<<pri->info<<"  ";
+        pri=pri->link;
+    }
+}
 
-// void inserir_final(no**pri, elemento a){
-//     no*novo, *p;
-//     novo=novo_no();
-//     novo -> info=a;
-//     novo->link=NULL;
-//     p=*pri;
-//     while (p!=NULL && p->link!=NULL)
-//         p=p->link;
-//     if (p==NULL)
-//         *pri=novo;
-//     else p->link=novo;
-// }
+void inserir_final(no**pri, elemento a){
+    no*novo, *p;
+    novo=novo_no();
+    novo -> info=a;
+    novo->link=NULL;
+    p=*pri;
+    while (p!=NULL && p->link!=NULL)
+        p=p->link;
+    if (p==NULL)
+        *pri=novo;
+    else p->link=novo;
+}
 
 // void inserir_inicio(no**pri, elemento a){
 //     no*novo;
@@ -70,31 +70,31 @@ using namespace std;
     
 // }
 
-// int main(){
-//     no *pri, *Pmaior=pri, *Pmenor=pri;
-//     pri=init();
-//     elemento valor;
-//     int n, i;
-//     cout<<"Digite a quantidade de valores que serão inseridos:  "; cin>>n;
-//     for (i=0; i<n; i++){
-//         cout<<"Valor "<<i+1<< ": "; cin>> valor;
-//         // inserir_final(&pri, valor);
-//         // inserir_ordenado(&pri, valor);
-//         inserir_inicio(&pri, valor);
-//     }
-//     no*p=pri;
-//     while (p!=NULL)
-//     {
-//         if (p->info > Pmaior->info)
-//             Pmaior = p;
-//         else if (p->info < Pmenor->info)
-//             Pmenor = p;
-//         p = p->link;
-//     }
-//     cout<<"Valores: "; imprime(pri);
-//     cout<<"\nMaior: "<<Pmaior->info<<endl;
-//     cout<<"Menor: "<<Pmenor->info<<endl;
-// }
+int main(){
+    no *pri, *Pmaior=pri, *Pmenor=pri;
+    pri=init();
+    elemento valor;
+    int n, i;
+    cout<<"Digite a quantidade de valores que serão inseridos:  "; cin>>n;
+    for (i=0; i<n; i++){
+        cout<<"Valor "<<i+1<< ": "; cin>> valor;
+        inserir_final(&pri, valor);
+        // inserir_ordenado(&pri, valor);
+        // inserir_inicio(&pri, valor);
+    }
+    no*p=pri;
+    while (p!=NULL)
+    {
+        if (p->info > Pmaior->info)
+            Pmaior = p;
+        else if (p->info < Pmenor->info)
+            Pmenor = p;
+        p = p->link;
+    }
+    cout<<"Valores: "; imprime(pri);
+    cout<<"\nMaior: "<<Pmaior->info<<endl;
+    cout<<"Menor: "<<Pmenor->info<<endl;
+}
 
 
 
@@ -239,11 +239,11 @@ using namespace std;
 
 
 //Exercício 05
-typedef produto prod;
-typedef struct {
-    int codigo;
-    char nome[31];
-    float preco;
-    int quantidade;
-}produto;
+// typedef produto prod;
+// typedef struct {
+//     int codigo;
+//     char nome[31];
+//     float preco;
+//     int quantidade;
+// }produto;
 
