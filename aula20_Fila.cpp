@@ -203,3 +203,51 @@ void imprimir_fila(Queue& Q){
 //     imprimir_fila(fila3);
 //     return 0;    
 // }
+
+// Exercício 07 - Construir uma função que recebe duas filas Q1 e Q2, contendo números inteiros ordenados e constrói uma terceira fila Q3, contendo os elementos da fila Q1 e da Q2 sem os elementos da interseção de Q1 com Q2.
+void cria_fila3(Queue& fila1, Queue& fila2, Queue&fila3, Queue& aux, elemento num){
+    int achou=0;
+    while (!isEmptyQ(fila1)){
+        num=eliminate(fila1);
+        while (!isEmptyQ(fila2)){
+            if(num==consult(fila2)){
+                eliminate(fila2);
+                achou=1;
+                break;
+            }
+            insert(aux, eliminate(fila2));
+        }
+        if(achou!=1){
+            insert(fila3, num);
+        }
+        while (!isEmptyQ(aux)){
+            insert(fila2, eliminate(aux));
+        }  
+    }
+    while (!isEmptyQ(fila2)){
+        insert(fila3, eliminate(fila2));
+    }
+}
+
+int main(){
+    Queue fila1, fila2, fila3, aux;
+    initQueue(fila1);
+    initQueue(fila2);
+    initQueue(fila3);
+    initQueue(aux);
+    elemento num;
+    int n;
+    cout<<"Qtd de elementos fila 1: "; cin>>n;
+    for(int i=0; i<n; i++){
+        cout<<"Numero: "; cin>>num;
+        insert(fila1, num);
+    }
+    cout<<"Qtd de elementos fila 2: "; cin>>n;
+    for(int i=0; i<n; i++){
+        cout<<"Numero: "; cin>>num;
+        insert(fila2, num);
+    }
+    cria_fila3(fila1, fila2, fila3, aux, num);
+    imprimir_fila(fila3);
+    return 0;
+}

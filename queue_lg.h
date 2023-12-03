@@ -10,7 +10,8 @@
 
 using namespace std;
 
-typedef int queue_element;
+// typedef int queue_element;
+typedef no_arv* queue_element;
 
 struct  no  {
     queue_element  info ;
