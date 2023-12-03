@@ -27,7 +27,7 @@ struct Stack{
     stack_element local[MAXELEMENTS];
 };
 ///fun��o auxiliar para as mensagens de erros
-void error(int i){
+void error_pilha(int i){
     switch(i){
         case 1:cerr<< " OVERFLOW "; exit(1);
         case 2:cerr<< " UNDERFLOW ";exit(1);
@@ -39,17 +39,17 @@ void initStack(Stack& p){ p.top =-1;}
 
 ///fun��o que inserir informa��o no topo da pilha
 void push(Stack & p, stack_element x){
-    if ( p.top == MAXELEMENTS-1)error(1);
+    if ( p.top == MAXELEMENTS-1)error_pilha(1);
     p.local[++(p.top)]=x;
 }
 ///fun��o que eliminar informa��o do topo da pilha
 stack_element pop (Stack& p){
-    if( p.top ==-1)error(2);
+    if( p.top ==-1)error_pilha(2);
     return (p.local[p.top--]);
 }
 ///fun��o que consultar informa��o do topo da pilha
 stack_element peek(Stack p){
-    if( p.top ==-1) error(2);
+    if( p.top ==-1) error_pilha(2);
         return (p.local[p.top]);
 }
 ///fun��o que verificar se pilha vazia(1) ou n�o(0)
