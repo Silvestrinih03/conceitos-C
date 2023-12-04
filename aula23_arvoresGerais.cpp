@@ -144,21 +144,48 @@ int conta_nos_folhas(no_arv*raiz, int grau){
 int conta_um_descendente(no_arv*raiz, int grau){
     Queue fila; initQueue(fila);
     queue_element x;
-    int cont_no=0, cont_desc=0;
+    int cont=0;
     if(raiz==NULL) return -1; // Arvore vazia
     insert(fila, raiz);
     while (!isEmptyQ(fila)){
         x = eliminate(fila);
+        int numFilhos=0;
         for(int i=0; i<grau; i++){
             if(x->link[i]!=NULL){
                 insert(fila, x->link[i]);
-                cont_no++;
+                numFilhos++;
             }
-            else cont_no++;
         }
-        if(cont_no==1) cont_desc++;
+        if(numFilhos==1){
+            cont++;
+        }
     }
-    return cont_desc;
+    return cont;
+}
+
+// Exercício 04 - Considere uma árvore qualquer, cujo nó raiz está armazenado na variável raiz. 
+// Construir uma função que recebe o endereço do nó raiz e conta quantos nós dessa árvore possui todos os descendentes. 
+// Isto é, nenhum dos seus links é NULL. Retorna pelo return número de nós
+int conta_todos_descendentes(no_arv*raiz, int grau){
+    Queue fila; initQueue(fila);
+    queue_element elemento_fila;
+    int cont=0;
+    if(raiz==NULL) return -1; // Arvore vazia
+    insert(fila, raiz);
+    while (!isEmptyQ(fila)){
+        elemento_fila = eliminate(fila);
+        int link_null=0;
+        for(int i=0; i<grau; i++){
+            if(elemento_fila->link[i]==NULL){
+                link_null++;
+                break;
+            }
+            else insert(fila, elemento_fila->link[i]);
+        }
+        if(link_null==0)cont++;
+    }
+    return cont;
+    
 }
 
 
@@ -193,6 +220,8 @@ int main()
     cont = conta_nos_folhas(raiz, grau);
     cout<<endl<<"Quantidade de nos folhas: "<<cont;
     cont = conta_um_descendente(raiz, grau);
-    cout<<endl<<"Quantidade de nos com um único descendente: "<< cont; 
+    cout<<endl<<"Quantidade de nos com um único descendente: "<< cont;
+    cont = conta_todos_descendentes(raiz, grau);
+    cout<<endl<<"Quantidade de nos sem links nulos: "<< cont;
     return 0;
 }
