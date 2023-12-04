@@ -184,8 +184,7 @@ int conta_todos_descendentes(no_arv*raiz, int grau){
         }
         if(link_null==0)cont++;
     }
-    return cont;
-    
+    return cont;  
 }
 
 
