@@ -22,7 +22,9 @@
 using namespace std;
 
 // typedef int stack_element;
-typedef no_arv* stack_element;
+// typedef no_arv* stack_element;
+typedef no_arvb* stack_element;
+
 struct Stack{
     int top;
     stack_element local[MAXELEMENTS];

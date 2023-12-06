@@ -32,6 +32,96 @@ void imprimir_fila(Queue& Q){
     cout<<endl;
 }
 
+void inserir(Queue& fila){
+    elemento num;
+    int n;
+    cout<<"Qnt de elementos: "; cin>>n;
+    for (int i=0; i<n; i++){
+        cout<<"Elemento: "; cin>>num;
+        insert(fila, num);
+    }
+}
+
+// Exercício 02
+int elimina_elementos(Queue& fila, elemento num, int n){
+    Queue aux; initQueue(aux);
+    elemento num_aux;
+    int conta_elementos=0;
+    if(isEmptyQ(fila)) return -1;
+    while (!isEmptyQ(fila)){
+        insert(aux, eliminate(fila));
+        conta_elementos++;
+    }
+    while (!isEmptyQ(aux)){
+        insert(fila, eliminate(aux));
+    }
+    if(conta_elementos>n){
+        for(int i=0; i<n; i++){
+            eliminate(fila);
+        }
+        return 1;
+    }
+    else return 0;
+}
+
+// Exercício 05
+void inverte(Queue&fila){
+    Stack P; initStack(P);
+    elemento num;
+    if(isEmptyQ(fila)) return;
+    while (!isEmptyQ(fila)){
+        push(P, eliminate(fila));
+    }
+    while (!isEmpty(P)){
+        insert(fila, pop(P));
+    }
+}
+
+// Exercício 06 - Os elementos da fila 1 que são diferentes dos elementos da fila 2
+void interfila(Queue&fila, Queue&fila2, Queue&fila3){
+    Queue aux;
+    initQueue(aux);
+    elemento num1, num2;
+    while (!isEmptyQ(fila)){
+        num1 = eliminate(fila);
+        int achou=0;
+        while (!isEmptyQ(fila2)){
+            num2=eliminate(fila2);
+            if(num1 != num2){
+                insert(aux, num2);
+            }
+            else achou++;
+        }
+        while (!isEmptyQ(aux)){
+            insert(fila2, eliminate(aux));
+        }
+        if(achou==0) insert(fila3, num1);
+    }
+    
+}
+
+int main(){
+    Queue fila, fila2, fila3; initQueue(fila); initQueue(fila2); initQueue(fila3);
+    elemento num;
+    int n, a;
+    inserir(fila);
+    inserir(fila2);
+    // cout<<"Quantidade de elementos que serão eliminados: "; cin>>n;
+    // a = elimina_elementos(fila, num, n);
+    // if(a==-1) cout<<"Fila vazia";
+    // else if(a==0) cout<<"Mais elementos do q existe";
+    // else cout<<"Sucesso";
+
+    // inverte(fila);
+
+    interfila(fila, fila2, fila3);
+
+    imprimir_fila(fila3);
+}
+
+
+
+
 // Exercícicios 01, 02 e 03 foram feitos juntos!!!
 // Exercício 01 - Construir uma função que faz a leitura de n números inteiros para uma fila
 // int main(){
@@ -205,49 +295,49 @@ void imprimir_fila(Queue& Q){
 // }
 
 // Exercício 07 - Construir uma função que recebe duas filas Q1 e Q2, contendo números inteiros ordenados e constrói uma terceira fila Q3, contendo os elementos da fila Q1 e da Q2 sem os elementos da interseção de Q1 com Q2.
-void cria_fila3(Queue& fila1, Queue& fila2, Queue&fila3, Queue& aux, elemento num){
-    int achou=0;
-    while (!isEmptyQ(fila1)){
-        num=eliminate(fila1);
-        while (!isEmptyQ(fila2)){
-            if(num==consult(fila2)){
-                eliminate(fila2);
-                achou=1;
-                break;
-            }
-            insert(aux, eliminate(fila2));
-        }
-        if(achou!=1){
-            insert(fila3, num);
-        }
-        while (!isEmptyQ(aux)){
-            insert(fila2, eliminate(aux));
-        }  
-    }
-    while (!isEmptyQ(fila2)){
-        insert(fila3, eliminate(fila2));
-    }
-}
+// void cria_fila3(Queue& fila1, Queue& fila2, Queue&fila3, Queue& aux, elemento num){
+//     int achou=0;
+//     while (!isEmptyQ(fila1)){
+//         num=eliminate(fila1);
+//         while (!isEmptyQ(fila2)){
+//             if(num==consult(fila2)){
+//                 eliminate(fila2);
+//                 achou=1;
+//                 break;
+//             }
+//             insert(aux, eliminate(fila2));
+//         }
+//         if(achou!=1){
+//             insert(fila3, num);
+//         }
+//         while (!isEmptyQ(aux)){
+//             insert(fila2, eliminate(aux));
+//         }  
+//     }
+//     while (!isEmptyQ(fila2)){
+//         insert(fila3, eliminate(fila2));
+//     }
+// }
 
-int main(){
-    Queue fila1, fila2, fila3, aux;
-    initQueue(fila1);
-    initQueue(fila2);
-    initQueue(fila3);
-    initQueue(aux);
-    elemento num;
-    int n;
-    cout<<"Qtd de elementos fila 1: "; cin>>n;
-    for(int i=0; i<n; i++){
-        cout<<"Numero: "; cin>>num;
-        insert(fila1, num);
-    }
-    cout<<"Qtd de elementos fila 2: "; cin>>n;
-    for(int i=0; i<n; i++){
-        cout<<"Numero: "; cin>>num;
-        insert(fila2, num);
-    }
-    cria_fila3(fila1, fila2, fila3, aux, num);
-    imprimir_fila(fila3);
-    return 0;
-}
+// int main(){
+//     Queue fila1, fila2, fila3, aux;
+//     initQueue(fila1);
+//     initQueue(fila2);
+//     initQueue(fila3);
+//     initQueue(aux);
+//     elemento num;
+//     int n;
+//     cout<<"Qtd de elementos fila 1: "; cin>>n;
+//     for(int i=0; i<n; i++){
+//         cout<<"Numero: "; cin>>num;
+//         insert(fila1, num);
+//     }
+//     cout<<"Qtd de elementos fila 2: "; cin>>n;
+//     for(int i=0; i<n; i++){
+//         cout<<"Numero: "; cin>>num;
+//         insert(fila2, num);
+//     }
+//     cria_fila3(fila1, fila2, fila3, aux, num);
+//     imprimir_fila(fila3);
+//     return 0;
+// }

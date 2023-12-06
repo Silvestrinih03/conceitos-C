@@ -11,7 +11,8 @@
 using namespace std;
 
 // typedef int queue_element;
-typedef no_arv* queue_element;
+// typedef no_arv* queue_eleemnt;
+typedef no_arvb* queue_element;
 
 struct  no  {
     queue_element  info ;
