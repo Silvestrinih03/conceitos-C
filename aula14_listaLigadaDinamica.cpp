@@ -159,17 +159,13 @@ int verifica_ordenacao(no *pri)
 // Exercício prova - Dada uma lista ligada contendo números inteiros quaisquer, construir uma função que insere uma cópia do último nó logo após ele.
 // Testar se está vazia e imprimir mensagem
 void duplica_ultimo(no*pri){
-    no*anterior=NULL, *novo;
+    no*novo;
     novo=novo_no();
     if(pri==NULL){
         cout<<"Lista vazia!";
         return;
     }
-    while (pri->link!=NULL)
-    {
-        anterior=pri;
-        pri=pri->link;
-    }
+    while (pri->link!=NULL) pri=pri->link;
     novo->info=pri->info;
     pri->link=novo;
     novo->link=NULL;
