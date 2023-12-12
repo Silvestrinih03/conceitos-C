@@ -57,6 +57,7 @@ void inserir_por_nivel(no_arv **raiz, int grau, arv_elemento x)
         } /// fim-for
     }     /// fim-while
 }
+
 void percorrer_largura(no_arv *raiz, int grau)
 {
     queue_element v;

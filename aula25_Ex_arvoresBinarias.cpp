@@ -109,6 +109,24 @@ int localizaV(no_arvb*raiz, int v){
 
 }
 
+// Exercício 05 - Considere uma árvore binária qualquer, cujo nó raiz está armazenado na variável raiz.
+//  Construir uma função que verifica quantos nós folha a árvore possui
+int conta_nos_folha(no_arvb*raiz){
+    no_arvb*p=raiz;
+    int cont=0;
+    if(raiz==NULL) return 0;
+    while (p!=NULL){
+        if(p->le==NULL && p->ld==NULL) cont++;
+        p=p->le;
+    }
+    p=raiz;
+    while (p!=NULL)
+    {
+        if(p->le==NULL && p->ld==NULL) cont++;
+        p=p->ld;
+    }
+}
+
 int main(){
     no_arvb*raiz=NULL, *raizb=NULL;
     elemento a;
@@ -139,4 +157,6 @@ int main(){
     cout<<endl;
     if(resultado==1) cout<<"Achou!";
     else cout<<"Nao achou!";
+    cont = conta_nos_folha(raiz);
+    cout<<endl<<"Quantidade de nós folhas: "<<cont;
 }

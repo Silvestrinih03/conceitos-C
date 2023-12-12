@@ -64,7 +64,7 @@ int elimina_elementos(Queue& fila, elemento num, int n){
     else return 0;
 }
 
-// Exercício 05
+// Exercício 05 - Construir uma função que recebe uma fila Q, contendo números inteiros quaisquer e usando uma estrutura auxiliar inverte a ordem dos elementos dessa fila
 void inverte(Queue&fila){
     Stack P; initStack(P);
     elemento num;
